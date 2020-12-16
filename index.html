@@ -8,9 +8,9 @@
     <meta name="keywords" content="weather, javascript, app, Mayank Singh" />
     <meta property="og:title" content="Weather" />
     <meta property="og:description" content="Dynamic Weather app by Mayank Singh" />
-    <meta name="og:image" content="https://mayank-01-ms.github.io/images/weather.png" />
+    <meta name="og:image" content="https://mayank-01-ms.github.io/weather/images/weather.png" />
     <meta property="og:type" content="web application" />
-    <meta property="og:url" content="https://mayank-01-ms.github.io/clock/weather">
+    <meta property="og:url" content="https://mayank-01-ms.github.io/weather">
     <meta name="og:site_name" content="Weather app" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,7 +18,6 @@
     <meta name="apple-mobile-web-app-title" content="Weather">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/weather.css">
     <link rel="shortcut icon" href="images/weather.png" type="image/png">
     <link rel="manifest" href="app.webmanifest">
     <title>Weather</title>
@@ -26,7 +25,7 @@
 
 <body class="dark">
     <div class="wrapper">
-        <section id="background" class="">
+        <section id="background">
             <section id="welcome">
                 <div class="welcome-msg">
                     <img src="images/weather.png" alt="logo">                    
@@ -129,6 +128,11 @@
                         Show 4 more rows
                     </div>
                 </div>
+                <div class="hourly-forecast">
+                    <h4>Hourly Forecast</h4>
+                    <ul>
+                    </ul>
+                </div>
                 <div class="current-details">
                     <h4>Current Details</h4>
                     <div class="d-row">
@@ -226,7 +230,7 @@
         </section>
     </div>
 </body>
-<script src="js/weather.js"></script>
+<script src="js/app.js"></script>
 <script>
     if ('serviceWorker' in navigator){
         window.addEventListener('load', () => {
