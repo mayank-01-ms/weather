@@ -228,8 +228,8 @@ let isdayorNight = (sunrise, sunset) => {
   let srtempDateObj = new Date(sunrise * 1000);
   let sstempDateObj = new Date(sunset * 1000);
   if (date.getTime() >= srtempDateObj.getTime() && date.getTime() <= sstempDateObj.getTime())
-    return 'night';
-  return 'day';
+    return 'day';
+  return 'night';
 }
 
 let getWeatherIcon = description => {
