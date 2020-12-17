@@ -91,7 +91,7 @@ let createSnow = () => {
         let snow = document.createElement("span");
         snow.classList.add("snowflake");
         snow.style.top = Math.random() * 100 + 'vh';
-        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.left = Math.random() * 90 + 'vw';
         snow.style.height = snow.style.width = 5 + Math.random() * 10 + 'px';
         snow.style.animationDuration = 1 + Math.random() * 4 + 's';
         snow.style.fontSize = 0.75 + Math.random() * 0.5 + 'rem';
@@ -160,6 +160,15 @@ let clearWeather = (time = 'day') => {
     background.classList.add('clear');
     let sun = document.createElement('div');
     sun.classList.add("sun");
+    let flareOne = document.createElement('div');
+    flareOne.classList.add('flare-one');
+    let flareTwo = document.createElement('div');
+    flareTwo.classList.add('flare-two');
+    let flareThree = document.createElement('div');
+    flareThree.classList.add('flare-three');
+    sun.append(flareOne);
+    sun.append(flareTwo);
+    sun.append(flareThree);
     weatherIcon.append(sun);
 
     metaTheme.setAttribute("content", "#5896fd");
@@ -220,7 +229,7 @@ let isdayorNight = (sunrise, sunset) => {
   let sstempDateObj = new Date(sunset * 1000);
   if (date.getTime() >= srtempDateObj.getTime() && date.getTime() <= sstempDateObj.getTime())
     return 'day';
-  return 'night';
+  return 'day';
 }
 
 let getWeatherIcon = description => {
