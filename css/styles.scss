@@ -113,7 +113,6 @@
         .future-forecast,
         .hourly-forecast,
         .current-details{
-            background: var(--foreground);
             background: transparent;
             border-radius: 15px;
             padding: 0 1rem;
@@ -150,6 +149,8 @@
         }
         .future-forecast{
             margin-top: 150px;
+            font-size: 0.9rem;
+
             .fc-day{
                 display: flex;
                 justify-content: space-between;
@@ -175,7 +176,7 @@
                 cursor: pointer;
                 padding: 1rem 0;
                 text-align: center;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 z-index: 10;
             }
         }
@@ -190,6 +191,7 @@
                 padding: 1rem 0;
                 display: flex;
                 overflow-y: scroll;
+                font-size: 0.85rem;
 
                 li{
                     list-style: none;
@@ -197,8 +199,8 @@
                     justify-content: center;
                     align-items: center;
                     flex-direction: column;
-                    margin: 0 0.5rem;
-                    min-width: 5rem;
+                    margin: 0 0.25rem;
+                    min-width: 4rem;
 
                     &:first-child{
                         margin-left: 0;
@@ -211,6 +213,9 @@
                         img{
                             max-width: 100%;
                         }
+                    }
+                    .h-wts{
+                        color: var(--textM);
                     }
                 }
             }
@@ -237,17 +242,15 @@
                     justify-content: space-between;
                     
                     &:first-child{
-                        border-right: 1px solid var(--wborder);
+                        border-right: 1px solid var(--border);
                     }
 
                     .d-info{
                         p{
+                            font-size: 0.85rem;
+
                             &:first-child{
                                 color: var(--textM);
-                                font-size: 0.85rem;
-                            }
-                            &:nth-child(2){
-                                font-size: 0.9rem;
                             }
                         }
                         .wind-speed-logo{
@@ -274,14 +277,10 @@
     #background{
         min-height: 100vh;
         width: 100vw;
-        position: relative;
         background: var(--weatherbg);
         overflow: hidden;
-        
-        &.clear{
-            background: var(--weatherbg);
-        }
-    
+        z-index: 99;
+
         .weather-icon{
             .snow-flake-icon{
                 font-size: 6rem;
@@ -293,71 +292,76 @@
             }
             
             .sun{
-                position: absolute;
-                top: -2rem;
-                right: -2rem;
-                background: var(--sun);
-                border-radius: 50%;
-                height: 9rem;
-                width: 9rem;
                 position: relative;
-                opacity: 0.9;
-                
-                &::before{
-                    content: '';
+                top: 0;
+                right: -1.5rem;
+                width: 150px;
+                height: 150px;
+                border-radius: 9999px;
+                box-shadow: inset 0px 0px 300px 2px rgba(250, 250, 250, 0.75), 
+                                    0px 0px 53px 2px rgba(250,250,250,1);
+
+                @mixin flare ($top, $right, $dimension){
                     position: absolute;
-                    top: -1rem;
-                    left: -1rem;
-                    height: 11rem;
-                    width: 11rem;
+                    top: $top;
+                    right: $right;
+                    height: $dimension;
+                    width: $dimension;
                     border-radius: 50%;
-                    background: yellow;
-                    opacity: 0.2;
-                    animation: sunflare 6s linear infinite;
                 }
-                &::after{
-                    content: '';
-                    position: absolute;
-                    top: 0rem;
-                    left: 0rem;
-                    height: 9rem;
-                    width: 9rem;
-                    border-radius: 50%;
-                    background: yellow;
-                    opacity: 0.15;
-                    animation: sunflare 6s 6s linear infinite;
+
+                .flare-one{
+                    @include flare(10rem, 8rem, 60px);
+                    animation: moveFlareOne 6s linear infinite;
+                    box-shadow: inset 0px 0px 160px 2px rgba(250,250,250,0.35), 
+                    0px 0px 20px 2px rgba(250,250,250,0.5);
                 }
-                
-                @keyframes sunflare {
-                    0%{
-                        top: 0rem;
-                        left: 0rem;
-                        height: 9rem;
-                        width: 9rem;
-                        opacity: 0.1;
-                    } 
+                .flare-two{
+                    @include flare(12rem, 9rem, 120px);
+                    animation: moveFlareTwo 7s linear infinite;
+                    box-shadow: inset 0px 0px 160px 2px rgba(250,250,250,0.15), 
+                    0px 0px 20px 2px rgba(250,250,250,0.25);
+                }
+                .flare-three{
+                    @include flare(20rem, 15rem, 50px);
+                    animation: moveFlareThree 5s linear infinite;
+                    box-shadow: inset 0px 0px 160px 2px rgba(250,250,250,0.25), 
+                                0px 0px 20px 2px rgba(250,250,250,0.25);
+                }
+
+                @keyframes moveFlareOne {
+                    0%, 100%{
+                        top: 10rem;
+                        right: 7rem;
+                    }
                     50%{
-                        top: -3rem;
-                        left: -3rem;
-                        height: 15rem;
-                        width: 15rem;
-                        opacity: 0.09;                            
-                    }
-                    85%{
-                        top: -5.8rem;
-                        left: -5.8rem;
-                        height: 20.6rem;
-                        width: 20.6rem;
-                        opacity: 0.025;
-                    }
-                    100%{
-                        top: -6rem;
-                        left: -6rem;
-                        height: 21rem;
-                        width: 21rem;
-                        opacity: 0;
+                        top: 11rem;
+                        right: 9rem;
                     }
                 }
+                @keyframes moveFlareTwo {
+                    0%, 100%{
+                        top: 12rem;
+                        right: 9rem;
+                        transform: scale(1);
+                    }
+                    50%{
+                        top: 13rem;
+                        right: 10rem;
+                        transform: scale(1.1);
+                    }
+                }
+                @keyframes moveFlareThree {
+                    0%, 100%{
+                        top: 20rem;
+                        right: 15rem;
+                    }
+                    50%{
+                        top: 21rem;
+                        right: 16rem;
+                    }
+                }
+                
             }
     
             .moon{
@@ -396,7 +400,7 @@
             background: transparent;
             
             &::after {
-                color: #fff !important; 
+                color: #fff !important;
                 content: "\2744"; 
             }
             animation: snowfall 8s linear infinite;
@@ -486,7 +490,7 @@
             left: 0;
             height: 100%;
             width: 100vw;
-            animation: thunder 7s linear infinite;
+            animation: thunder 5s linear infinite;
     
             @keyframes thunder {
                 0%{

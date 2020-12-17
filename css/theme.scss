@@ -2,19 +2,27 @@
     --textH: rgba(255, 255, 255, 1);
     --textM: rgba(255, 255, 255, 0.75);
 
-    --clearDay: linear-gradient(210deg, #aecdff 10%, #5896fd 45%);
-    --sun: linear-gradient(315deg, #f9ea8f 0%, #aff1da 74%);
-
+    --sun: linear-gradient(315deg, #f7d606 0%, #f3980e 74%);
+    --sun: #f7cb06;
+    
     --border: rgba(255, 255, 255, 0.25);
+    --weatherbg: linear-gradient(315deg, #3F5EFB, #FC466B);
 }
 
 .invert{
     filter: invert(1);
 }
 
+.clear{
+    --weatherbg: linear-gradient(210deg, #aecdff 10%, #5896fd 45%);
+}
+.day{
+    --weatherbg: linear-gradient(210deg, #aecdff 10%, #5896fd 45%);
+}
+
 .cloudy{
     // --weatherbg: linear-gradient(to top, #dae2f8 0%, #d6a4a4 10%);
-    --weatherbg: linear-gradient(315deg, #3F5EFB, #FC466B);
+    --weatherbg: linear-gradient(315deg, #3F5EFB 30%, #FC466B 90%);
 }
 
 .rainy{
@@ -33,7 +41,4 @@
 
 .snow{
     --weatherbg: linear-gradient(to top, rgba(23, 95, 223, 0.7) 0%, rgba(0, 120, 234, 0.7) 100%);
-    // --weatherbg: linear-gradient(180deg, #85C9C8, #9ed2ec);
-    --weatherbg: linear-gradient(180deg, #e6dada, #274046);
-    --cardbg: #5896fd;
 }
