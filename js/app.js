@@ -228,7 +228,7 @@ let isdayorNight = (sunrise, sunset) => {
   let srtempDateObj = new Date(sunrise * 1000);
   let sstempDateObj = new Date(sunset * 1000);
   if (date.getTime() >= srtempDateObj.getTime() && date.getTime() <= sstempDateObj.getTime())
-    return 'day';
+    return 'night';
   return 'day';
 }
 
