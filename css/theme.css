@@ -1,0 +1,44 @@
+:root {
+  --textH: rgba(255, 255, 255, 1);
+  --textM: rgba(255, 255, 255, 0.75);
+  --sun: linear-gradient(315deg, #f7d606 0%, #f3980e 74%);
+  --sun: #f7cb06;
+  --border: rgba(255, 255, 255, 0.25);
+  --weatherbg: linear-gradient(315deg, #3F5EFB, #FC466B);
+}
+
+.invert {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.clear {
+  --weatherbg: linear-gradient(210deg, #aecdff 10%, #5896fd 45%);
+}
+
+.day {
+  --weatherbg: linear-gradient(210deg, #aecdff 10%, #5896fd 45%);
+}
+
+.cloudy {
+  --weatherbg: linear-gradient(315deg, #83eaf1 0%, #63a4ff 74%);
+}
+
+.rainy {
+  --weatherbg: linear-gradient(to bottom, #616161 20%, #9bc5c3 70%);
+}
+
+.foggy {
+  --weatherbg: linear-gradient(to bottom, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.6) 70%);
+}
+
+.night {
+  --weatherbg:linear-gradient(326deg, #a4508b 0%, #5f0a87 100%);
+  --weatherbg:linear-gradient(to bottom, #021a48 0%, #0a8eb9 70%);
+  --weatherFooter: #cd82a0;
+}
+
+.snow {
+  --weatherbg: linear-gradient(to top, rgba(23, 95, 223, 0.7) 0%, rgba(0, 120, 234, 0.7) 100%);
+}
+/*# sourceMappingURL=theme.css.map */
