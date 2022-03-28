@@ -206,7 +206,7 @@ let thunderWeather = () => {
 let cloudyWeather = () => {
     background.classList.add('cloudy');
     createClouds();
-    metaTheme.setAttribute("content", "#fc466b");
+    metaTheme.setAttribute("content", "#63a4ff");
 }
 
 let convertTimestamptoTime = unixTimestamp => { 
@@ -371,7 +371,7 @@ let fetchWeather = (latitude, longitude) => {
     //Show loading preview
     loadingScreen.style.display = 'block';
 
-    const apiKey = "534daa4490cfa7fb54ebb47a1ff3d2d6";
+    const apiKey = "359ebc3913cdfaf3cda4d3a5a728049e";
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     fetch(url)
     .then(
@@ -429,7 +429,7 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     let city = document.getElementById('city').value.trim();
     
-    let privateToken = 'pk.dd84ee8a4b20a86403e581cfa93f58f7'; 
+    let privateToken = 'pk.605dd685238cf7692646fed54a9edd35'; 
     let checkcityurl = `https://us1.locationiq.com/v1/search.php?key=${privateToken}&format=json&q=${city}`;
     fetch(checkcityurl)
     .then(
