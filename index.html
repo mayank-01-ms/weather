@@ -38,15 +38,16 @@
             <section id="welcome">
                 <div class="welcome-msg">
                     <img src="images/weather.png" alt="logo">                    
-                <h4>
-                    Welcome!
-                </h4>
-                <p>No location access. 
-                <br/>Please Enter your city to continue.</p>
-                <form action="" autocomplete="off">
-                    <input type="text" placeholder="Enter your city" id="city">
-                </form>
-                <div id="err-c-msg"></div>
+                    <h4>
+                        Welcome!
+                    </h4>
+                    <p>No location access. 
+                    <br/>Please Enter your city to continue.</p>
+                    <form action="" autocomplete="off">
+                        <input type="text" placeholder="Enter your city" id="city">
+                        <button type="submit">Go</button>
+                    </form>
+                    <div id="err-c-msg"></div>
                 </div>
             </section>
             <div id="loading">
@@ -62,6 +63,7 @@
                         <span id="location"></span>
                         <span id="date"></span>
                         <div id="status"></div>
+                        <div id="description"></div>
                     </div>
                     <div class="weather-icon">
                     </div>
