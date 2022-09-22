@@ -59,6 +59,7 @@ const dateArea = document.getElementById("date");
 dateArea.innerHTML = date.toLocaleDateString();
 
 const status = document.getElementById("status");
+const description = document.getElementById('description');
 
 const thirdDay = document.getElementById("third-day-date");
 const fourthDay = document.getElementById("fourth-day-date");
@@ -292,6 +293,7 @@ let updateWeather = (data) => {
 
     temperatureArea.innerHTML = Math.round(data.current.temp) + '<span class="units">&deg; C</span>';
     status.innerHTML = data.current.weather[0].main;
+    description.innerHTML = data.current.weather[0].description;
 
     firstdaymm.innerHTML = Math.round(data.daily[0].temp.max) + ' / ' + Math.round(data.daily[0].temp.min);
     seconddaymm.innerHTML = Math.round(data.daily[1].temp.max) + ' / ' + Math.round(data.daily[1].temp.min);

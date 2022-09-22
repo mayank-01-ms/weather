@@ -16,6 +16,13 @@
     img{
         pointer-events: none;
     }
+    button{
+        outline: none;
+        border: none;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+    }
 }
 .wrapper{
     position: absolute;
@@ -58,16 +65,13 @@
     }
 
     #welcome{
-        min-height: 100vh;
-        background: linear-gradient(315deg, #3F5EFB, #FC466B); 
         display: flex;
         padding-top: 7rem;
         justify-content: center;
         display: none;
 
         .welcome-msg{
-            height: 250px;
-            padding: 0 1rem;
+            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,6 +94,7 @@
             form{
                 margin-top: 1rem;
                 input{
+                    display: block;
                     outline: none;
                     border: none;
                     border-bottom: 1px solid rgba($color: #fff, $alpha: 0.87);
@@ -100,6 +105,10 @@
                     &::placeholder{
                         color: rgba($color: #fff, $alpha: 0.87);
                     }
+                }
+                button{
+                    margin-top: 0.5rem;
+                    cursor: pointer;
                 }
             }
             #err-c-msg{
