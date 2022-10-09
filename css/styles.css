@@ -24,11 +24,17 @@
 }
 
 * button {
+  cursor: pointer;
   outline: none;
   border: none;
   background: #fff;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+}
+
+* a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .wrapper {
@@ -272,7 +278,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  overflow-y: scroll;
+  overflow-x: scroll;
   font-size: 0.85rem;
 }
 
@@ -369,6 +375,15 @@
 
 .wrapper #weather .current-details .d-row .o-detail .d-icon img {
   max-width: 100%;
+}
+
+.wrapper #weather .settings_icon {
+  text-align: center;
+}
+
+.wrapper #weather .settings_icon img {
+  height: 25px;
+  width: 25px;
 }
 
 .wrapper #background {
@@ -829,7 +844,157 @@
   }
 }
 
+.settings-wrapper {
+  background: var(--weatherbg);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.settings-wrapper h2 {
+  text-align: center;
+}
+
+.settings-wrapper .block {
+  margin: 0.5rem;
+  margin-top: 1rem;
+  max-width: 500px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+  padding: 1rem;
+}
+
+.settings-wrapper .block #_switch {
+  display: none;
+}
+
+.settings-wrapper .block .label_switch {
+  cursor: pointer;
+  display: block;
+  width: 50px;
+  height: 25px;
+  border-radius: 1rem;
+  border: 1px solid #fff;
+  position: relative;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.settings-wrapper .block .label_switch::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+.settings-wrapper .block input:checked + .label_switch {
+  background: #fff;
+}
+
+.settings-wrapper .block input:checked + .label_switch::after {
+  background: var(--weatherbg);
+  left: 30px;
+}
+
+.settings-wrapper .block input[type="radio"] {
+  display: none;
+}
+
+.settings-wrapper .block input[type="radio"]:checked + .checkmark::after {
+  background: #fff;
+}
+
+.settings-wrapper .block .checkmark {
+  display: block;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+}
+
+.settings-wrapper .block .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: 1.5px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.settings-wrapper .block .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.settings-wrapper .block .option .right {
+  padding-left: 1rem;
+}
+
+.settings-wrapper .block .option.disabled {
+  opacity: 0.7;
+}
+
+.settings-wrapper .block .option:last-child {
+  padding-bottom: 0;
+}
+
+.settings-wrapper .block .option .right.radio_btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.settings-wrapper .block .option .right.radio_btns label {
+  margin: 0.25rem;
+}
+
+.settings-wrapper .block .error_msg {
+  display: none;
+  font-size: 0.85rem;
+  text-indent: 0.5rem;
+}
+
+.settings-wrapper .links {
+  margin-top: 1rem;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #999;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
   .wrapper #background {
     width: 500px;
     margin: 0 auto;

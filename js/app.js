@@ -254,6 +254,11 @@ let getWeatherIcon = description => {
 
 let updateWeather = (data) => {
 
+    let temperatureUnit = localStorage.getItem('temperatureUnit');
+    if(!temperatureUnit){
+        temperatureUnit = 'C';
+    }
+
   //Function to update hourly weather data
     let updateHourlyWeather = houryDataArray => {
       const ul = document.querySelector('.hourly-forecast ul');
@@ -269,7 +274,7 @@ let updateWeather = (data) => {
         icon.append(img);
         let temp = document.createElement('div');
         temp.classList.add('h-wtemp');
-        temp.innerHTML = Math.round(houryDataArray[i].temp) + '&deg; C';
+        temp.innerHTML = Math.round(houryDataArray[i].temp) + `&deg; ${temperatureUnit}`;
         let ts = document.createElement('div');
         ts.classList.add('h-wts');
         ts.innerHTML = convertTimestamptoTime(houryDataArray[i].dt);
@@ -291,7 +296,7 @@ let updateWeather = (data) => {
     //Show weather area
     weatherArea.style.display = 'block';
 
-    temperatureArea.innerHTML = Math.round(data.current.temp) + '<span class="units">&deg; C</span>';
+    temperatureArea.innerHTML = Math.round(data.current.temp) + `<span class="units">&deg; ${temperatureUnit}</span>`;
     status.innerHTML = data.current.weather[0].main;
     description.innerHTML = data.current.weather[0].description;
 
@@ -314,7 +319,7 @@ let updateWeather = (data) => {
     windSpeed.innerHTML = data.current.wind_speed + ' KM/H';
     //add negative sign so icon rotate anticlockwise, north is taken as 0 deg so 90 is added
     windSpeedLogo.style.transform = `rotate(${-(data.current.wind_deg + 90)}deg)`;
-    feelsLike.innerHTML = Math.round(data.current.feels_like) + '&deg; C';
+    feelsLike.innerHTML = Math.round(data.current.feels_like) + `&deg; ${temperatureUnit}`;
     humidity.innerHTML = data.current.humidity + ' %';
     uvIndex.innerHTML = data.current.uvi;
     sunrise.innerHTML = convertTimestamptoTime(data.current.sunrise);
@@ -341,7 +346,7 @@ let updateWeather = (data) => {
 
 let setCityName = (latitude, longitude) => {
 
-    const privateToken = 'pk.dd84ee8a4b20a86403e581cfa93f58f7';  
+    const privateToken = 'pk.605dd685238cf7692646fed54a9edd35';  
     let cityUrl = `https://us1.locationiq.com/v1/reverse.php?key=${privateToken}&lat=${latitude}&lon=${longitude}+&format=json`;
     fetch(cityUrl)
     .then(
@@ -374,7 +379,13 @@ let fetchWeather = (latitude, longitude) => {
     loadingScreen.style.display = 'block';
 
     const apiKey = "359ebc3913cdfaf3cda4d3a5a728049e";
-    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    let units = localStorage.getItem('temperatureUnit');
+    if(units){
+        units = (units == 'C') ? 'metric' : 'imperial';
+    }else{
+        units = 'metric';
+    }
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
     fetch(url)
     .then(
         response => {
@@ -410,17 +421,24 @@ let startApp = () => {
   //Set the background meta theme for loading preview
   metaTheme.setAttribute("content", "#FC466B");
 
-    if (navigator.geolocation){
+//   check if user has set to use GPS, then only use location or if he's visiting the app for first time
+    const isGPSOptionSet = localStorage.getItem('useGPS');
+    if ((!isGPSOptionSet || isGPSOptionSet == 'true') && navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position => {
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
             
-            localStorage.clear();
+            localStorage.removeItem('latitude');
+            localStorage.removeItem('longitude');
+            localStorage.removeItem('cityName');
+
             setCityName(latitude, longitude);
             fetchWeather(latitude, longitude);
         }, () => {
             getCityPopup();
         })
+    }else{
+        getCityPopup();
     }
 }
 
