@@ -216,9 +216,8 @@ let convertTimestamptoTime = unixTimestamp => {
     // and return time in 12 hour format
 
     let dateObj = new Date(unixTimestamp * 1000); 
-    dateObj.toUTCString(); 
     let hours = dateObj.getHours();
-    let ampm = hours > 12 ? 'PM' : 'AM';
+    let ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours == 0 ? 12 : hours;
     hours = hours > 12 ? hours - 12 : hours;
     let minutes = dateObj.getMinutes();
