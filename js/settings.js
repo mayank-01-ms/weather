@@ -70,7 +70,7 @@ document.getElementById('update_city').onclick = () => {
     localStorage.removeItem('latitude');
     localStorage.removeItem('longitude');
     localStorage.removeItem('cityName');
-    document.location.href = "/";
+    document.location.href = "/weather";
 }
 
 celsiusBtn.onchange = () => {
